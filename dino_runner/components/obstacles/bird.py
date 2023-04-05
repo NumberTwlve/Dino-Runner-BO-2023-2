@@ -11,6 +11,7 @@ class Bird(Obstacle):
         self.rect.y = random.randint (140, 400)
         self.step_index = 0
         self.flying = True
+        
 
     def update(self, game_speed, player):
         if self.flying:
