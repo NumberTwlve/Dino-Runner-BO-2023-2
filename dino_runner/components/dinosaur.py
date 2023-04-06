@@ -24,7 +24,9 @@ class Dinosaur:
         self.dino_jump = False
         self.jump_vel = self.JUMP_VEL
         self.dino_dead = False
-
+        self.shield = False
+        self.time_up_power_up = 0
+        self.dead_count = 0
     def update(self, user_input):
         if self.dino_jump:
             self.jump()
@@ -50,7 +52,10 @@ class Dinosaur:
         if self.step_index >= 10:
             self.step_index = 0
 
-        
+        if self.shield:
+            time_to_show = round((self.time_up_power_up - pygame.time.get_ticks()) / 1000, 2)
+            if time_to_show < 0:
+                self.reset()
 
     def draw(self, screen):
         screen.blit(self.image, self.dino_rect)
@@ -88,7 +93,13 @@ class Dinosaur:
 
         if power_up.type == SHIELD_TYPE:
             self.type = SHIELD_TYPE
-              
+            self.shield = True
+            self.time_up_power_up = power_up.time_up 
+    
+    def reset(self):
+        self.type = DEFAULT_TYPE
+        self.shield = False
+        self.time_up_power_up = 0
 
 
         
