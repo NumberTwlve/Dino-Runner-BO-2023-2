@@ -5,7 +5,7 @@ class PowerUp:
     Y_POS_POWER_UP = 125
     POWER_UP_DURATION = 5000
 
-    def __init__(self, image, type):
+    def __init__(self, image, type): #image es igual a hammer or shield, tipe es igual hammertyp o shield typr
         self.image = image
         self.type = type
         self.rect = self.image.get_rect()

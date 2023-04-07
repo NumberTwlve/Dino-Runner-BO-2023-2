@@ -1,6 +1,8 @@
+import pygame
 import random
 from dino_runner.components.obstacles.cactus import Cactus
 from dino_runner.components.obstacles.bird import Bird
+from dino_runner.components.obstacles.obstacle import Obstacle
 
 class ObstacleManager:
     def __init__(self):
@@ -14,9 +16,15 @@ class ObstacleManager:
         for obstacle in self.obstacles:
             if obstacle.rect.x < -obstacle.rect.width:
                 self.obstacles.pop()
+           
+        
+         #   if Obstacle.rect.colliderect(player.dino_rect):
+          #      if player.hammer:
+           #         self.obstacles.pop(obstacle)
+         
             obstacle.update(game_speed, player)
-
     def draw(self, screen):
         for obstacle in self.obstacles:
             obstacle.draw(screen)
+            
 
